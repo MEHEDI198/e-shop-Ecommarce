@@ -57,28 +57,28 @@ const Toprightbar = () => {
     <div className='flex items-center justify-end gap-[49px]'>
       {/* Dropdown */}
         <div>            
-            <select name="currency" className="gap-6 px-3 py-2" value={currency?.value || ''} onChange={handleChange}>
-                <option value="" className='bg-white'>Select Currency</option>
-                {currencies.map((c) => (
-                <option className='bg-white' key={c.value} value={c.value}>
-                    {c.value}
-                </option>
-                ))}
-            </select>              
+          <select name="currency" className="gap-6 px-3 py-2" value={currency?.value || ''} onChange={handleChange}>
+            <option value="" className='bg-white'>Select Currency</option>
+            {currencies.map((c) => (
+              <option className='bg-white' key={c.value} value={c.value}>
+                {c.value}
+              </option>
+            ))}
+          </select>              
         </div>
 
       <div ref={dropdownRef} className='relative after:content-[""] after:absolute after:w-[1px] after:h-[32px]       after:bg-[#BFBFBF] after:left-[-25px] after:top-[50%] after:-translate-y-[50%] before:content-[""] before:absolute before:w-[1px] before:h-[32px] before:bg-[#BFBFBF] before:left-[185px] before:top-[50%] before:-translate-y-[50%]'>
-            <div className='w-[175px] flex items-center p-2 cursor-pointer' onClick={() => setIsOpen(!isOpen)}>
+          <div className='w-[175px] flex items-center p-2 cursor-pointer' onClick={() => setIsOpen(!isOpen)}>
             {selectedCountry ? (
-                <>
+              <>
                 <img src={selectedCountry?.flag} alt={selectedCountry?.name} className='w-[16px] h-[12px] mr-2'/>
                 
                 <option className='bg-white mr-4 items-center'>{selectedCountry?.name}</option> <IoIosArrowDown />
-                </>
+              </>
             ) : (
-                <option className='bg-white gap-3 flex items-center'>Select Country <IoIosArrowDown /> </option>
+              <option className='bg-white gap-3 flex items-center'>Select Country <IoIosArrowDown /> </option>
             )}
-            </div>
+          </div>
 
         {/* Dropdown options */}
         {isOpen && (
