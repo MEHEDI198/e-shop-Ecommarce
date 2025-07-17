@@ -17,13 +17,26 @@ const Bottombar = () => {
     }
 
     document.addEventListener('mousedown', handleClickOutSide);
-  },[]);
-
-
-  
+  },[]);  
 
   const handleDropdown = () => {
     setIsDeopdownOpen(!isDeopdownOpen);
+  }
+  // ---------all product toggle--------
+  const [isallpDeopdownOpen, setIsallpDeopdownOpen] = useState(false);
+  const dropdownallpRef = useRef(null);
+   useEffect(() => {
+    const handleallpClickOutSide = (event) => {
+    
+      if (dropdownallpRef.current && !dropdownallpRef.current.contains(event.target)) {
+        setIsallpDeopdownOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleallpClickOutSide);
+  },[]);
+  const handleallpDropdown = () => {
+    setIsallpDeopdownOpen(!isallpDeopdownOpen);
   }
   return (
     <div className='bg-[#FF624C] '>
@@ -31,7 +44,22 @@ const Bottombar = () => {
         <div className='flex justify-between items-center  font-bold py-[24px]'>
           <div>
             <ul className='flex items-center gap-[80px] font-["Montserrat"] leading-6 text-white '>
-              <li><a href="/product-list" className='flex items-center gap-x-4'> <FaBars/>  All Catagories</a></li>
+              <li className='relative' ref={dropdownallpRef} >
+                <button className='flex items-center gap-x-4' onClick={handleallpDropdown} > <FaBars/> All Catagories</button>
+                  {isallpDeopdownOpen && (
+                  <div className='w-[200px] h-[250px] bg-white absolute mt-2 z-10 rounded  shadow-lg'>
+                    <ul className='py-2 font-["Montserrat"] font-normal text-base leading-6 text-black'>
+                      <li className='px-4 py-2 hover:bg-gray-200 cursor-pointer'>Product -1</li>
+                      <li className='px-4 py-2 hover:bg-gray-200 cursor-pointer '>Product -2</li>
+                      <li className='px-4 py-2 hover:bg-gray-200 cursor-pointer '>Product -3</li>
+                      <li className='px-4 py-2 hover:bg-gray-200 cursor-pointer '>Product -4</li>
+                      <li className='px-4 py-2 hover:bg-gray-200 cursor-pointer '>Product -5</li>
+                      <li className='px-4 py-2 hover:bg-gray-200 cursor-pointer '>Product -6</li>
+                      <li className='px-4 py-2 hover:bg-gray-200 cursor-pointer '>Product -7</li>
+                    </ul>
+                  </div>
+                )}
+              </li>
               
               <li className='relative' ref={dropdownRef}> 
                 <button onClick={handleDropdown}>Porducts</button>
@@ -42,6 +70,7 @@ const Bottombar = () => {
                       <li className='px-4 py-2 hover:bg-gray-200 cursor-pointer '>Product -2</li>
                       <li className='px-4 py-2 hover:bg-gray-200 cursor-pointer '>Product -3</li>
                       <li className='px-4 py-2 hover:bg-gray-200 cursor-pointer '>Product -4</li>
+                      <li className='px-4 py-2 hover:bg-gray-200 cursor-pointer '>Product -5</li>
                     </ul>
                   </div>
                 )}
