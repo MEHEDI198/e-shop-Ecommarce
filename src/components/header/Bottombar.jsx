@@ -17,7 +17,11 @@ const Bottombar = () => {
     }
 
     document.addEventListener('mousedown', handleClickOutSide);
-  },[]);  
+
+      return () => {
+      document.removeEventListener('mousedown', handleClickOutSide);
+      }
+    },[]);  
 
   const handleDropdown = () => {
     setIsDeopdownOpen(!isDeopdownOpen);
@@ -34,6 +38,9 @@ const Bottombar = () => {
     }
 
     document.addEventListener('mousedown', handleallpClickOutSide);
+      return () => {
+      document.removeEventListener('mousedown', handleallpClickOutSide);
+      }
   },[]);
   const handleallpDropdown = () => {
     setIsallpDeopdownOpen(!isallpDeopdownOpen);
